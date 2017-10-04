@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+
+import { LecturerService } from './../../../services/lecturer.service';
+import { Lecturer } from './../../../models/Lecturer';
 
 @Component({
   selector: 'app-lecturer-page',
@@ -9,9 +13,18 @@ import { routerTransition } from '../../router.animations';
 })
 export class LecturerPageComponent implements OnInit {
 
-  constructor() { }
+  lecturers: FirebaseListObservable<Lecturer[]>;
+
+  constructor(private db: AngularFireDatabase,
+    private lecturerService: LecturerService
+  ) {
+    this.getAllTheActiveLecturers();
+  }
 
   ngOnInit() {
   }
 
+  private getAllTheActiveLecturers() {
+    this.lecturers = this.lecturerService.getAllTheActiveLecturers();
+  }
 }

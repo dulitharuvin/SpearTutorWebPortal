@@ -1,6 +1,6 @@
 {
-  "name": "sb-admin-cli-update",
-  "version": "0.0.0",
+  "name": "spear-tutor-web-portal",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
