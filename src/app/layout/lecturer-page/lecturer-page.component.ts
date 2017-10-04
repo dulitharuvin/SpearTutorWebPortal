@@ -13,18 +13,13 @@ import { Lecturer } from './../../../models/Lecturer';
 })
 export class LecturerPageComponent implements OnInit {
 
-  lecturers: FirebaseListObservable<Lecturer[]>;
 
-  constructor(private db: AngularFireDatabase,
-    private lecturerService: LecturerService
+  constructor(
   ) {
-    this.getAllTheActiveLecturers();
+    
   }
 
   ngOnInit() {
   }
 
-  private getAllTheActiveLecturers() {
-    this.lecturers = this.lecturerService.getAllTheActiveLecturers();
-  }
 }
