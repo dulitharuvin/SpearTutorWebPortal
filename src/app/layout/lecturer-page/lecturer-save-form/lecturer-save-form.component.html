@@ -2,7 +2,7 @@
   <div class="col col-xl-12 col-lg-12">
     <div class="card mb-3">
       <div class="card-block">
-        <form role="form" [formGroup]="this.lecturerSaveForm" novalidate>
+        <form role="form" [formGroup]="lecturerSaveForm" (ngSubmit)="saveLecturer()" novalidate>
 
           <div class="form-group" [ngClass]="{
             'has-danger': firstName.invalid && (firstName.dirty || firstName.touched), 
@@ -59,8 +59,8 @@
             </div>
           </div>
 
-          <button type="submit" class="ui button">Submit</button>
-
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="reset" class="btn btn-secondary">Cancel</button>
         </form>
       </div>
     </div>

@@ -81,7 +81,11 @@ export class LecturerSaveFormComponent implements OnInit {
   }
 
   private saveLecturer() {
-
+    if (this.lecturerSaveForm.valid) {
+      console.log("Form Submitted!");
+      console.log(this.lecturerSaveForm.value);
+      this.lecturerSaveForm.reset();
+    }
   }
 
 }
