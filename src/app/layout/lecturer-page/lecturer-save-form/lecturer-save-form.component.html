@@ -1,16 +1,68 @@
-<form role="form">
-  <div class="form-group has-success">
-    <label class="form-control-label" for="inputSuccess">Input with success</label>
-    <input type="text" class="form-control form-control-success" id="inputSuccess">
-  </div>
+<div class="row">
+  <div class="col col-xl-12 col-lg-12">
+    <div class="card mb-3">
+      <div class="card-block">
+        <form role="form" [formGroup]="this.lecturerSaveForm" novalidate>
 
-  <div class="form-group has-warning">
-    <label class="form-control-label" for="inputWarning">Input with warning</label>
-    <input type="text" class="form-control form-control-warning" id="inputWarning">
-  </div>
+          <div class="form-group" [ngClass]="{
+            'has-danger': firstName.invalid && (firstName.dirty || firstName.touched), 
+            'has-success': firstName.valid && (firstName.dirty || firstName.touched) }">
+            <label class="form-control-label" for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" formControlName="firstName" required>
+            <div class="form-control-feedback" *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+              <p *ngIf="firstName.errors.required">First Name is required</p>
+              <p *ngIf="firstName.errors.minlength">First Name must be at least 3 characters long</p>
+            </div>
+          </div>
 
-  <div class="form-group has-danger">
-    <label class="form-control-label" for="inputError">Input with danger</label>
-    <input type="text" class="form-control form-control-danger" id="inputError">
+          <div class="form-group" [ngClass]="{
+            'has-danger': lastName.invalid && (lastName.dirty || lastName.touched), 
+            'has-success': lastName.valid && (lastName.dirty || lastName.touched) }">
+            <label class="form-control-label" for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" formControlName="lastName" required>
+            <div class="form-control-feedback" *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
+              <p *ngIf="lastName.errors.required">Last Name is required</p>
+              <p *ngIf="lastName.errors.minlength">Last Name must be at least 3 characters long</p>
+            </div>
+          </div>
+
+          <div class="form-group" [ngClass]="{
+            'has-danger': nic.invalid && (nic.dirty || nic.touched), 
+            'has-success': nic.valid && (nic.dirty || nic.touched) }">
+            <label class="form-control-label" for="nic">NIC</label>
+            <input type="text" class="form-control" id="nic" formControlName="nic" required>
+            <div class="form-control-feedback" *ngIf="nic.errors && (nic.dirty || nic.touched)">
+              <p *ngIf="nic.errors.required">NIC is required</p>
+              <p *ngIf="nic.errors.minlength">Please provide a valid nic</p>
+            </div>
+          </div>
+
+          <div class="form-group" [ngClass]="{
+            'has-danger': email.invalid && (email.dirty || email.touched), 
+            'has-success': email.valid && (email.dirty || email.touched) }">
+            <label class="form-control-label" for="email">Email</label>
+            <input type="email" class="form-control" id="email" formControlName="email" required>
+            <div class="form-control-feedback" *ngIf="email.errors && (email.dirty || email.touched)">
+              <p *ngIf="email.errors.required">Email is required</p>
+              <p *ngIf="email.errors.pattern">Please provide a valid email address</p>
+            </div>
+          </div>
+
+          <div class="form-group" [ngClass]="{
+            'has-danger': address.invalid && (address.dirty || address.touched), 
+            'has-success': address.valid && (address.dirty || address.touched) }">
+            <label class="form-control-label" for="address">Adress</label>
+            <textarea class="form-control" id="address" formControlName="address" required></textarea>
+            <div class="form-control-feedback" *ngIf="address.errors && (address.dirty || address.touched)">
+              <p *ngIf="address.errors.required">Address is required</p>
+              <p *ngIf="address.errors.minlength">Address must be at least 10 characters long</p>
+            </div>
+          </div>
+
+          <button type="submit" class="ui button">Submit</button>
+
+        </form>
+      </div>
+    </div>
   </div>
-</form>
+</div>
