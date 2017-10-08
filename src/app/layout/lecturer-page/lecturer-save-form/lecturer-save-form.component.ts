@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { LecturerService } from './../../../../services/lecturer.service';
@@ -11,7 +12,10 @@ import { EMAIL_REGEX } from './../../../shared/constants/constants';
 })
 export class LecturerSaveFormComponent implements OnInit {
 
-  private lecturerSaveForm: FormGroup;
+  private lecturer: Lecturer;
+  private EMAIL_REGEX: string;
+
+  @ViewChild('lecturerSaveForm') lecturerSaveForm: any;
 
   private firstName: FormControl;
   private lastName: FormControl;
@@ -19,72 +23,26 @@ export class LecturerSaveFormComponent implements OnInit {
   private email: FormControl;
   private address: FormControl;
 
-  constructor(private lecturerService: LecturerService) {
-
+  constructor(private lecturerService: LecturerService,
+  private router: Router) {
+    this.lecturer = new Lecturer();
+    this.EMAIL_REGEX = EMAIL_REGEX;
   }
 
   ngOnInit() {
-    this.createFormControls();
-    this.createForm();
-  }
 
-  private createFormControls() {
-    this.firstName = new FormControl(
-      '',
-      [
-        Validators.minLength(3),
-        Validators.maxLength(50),
-        Validators.required
-      ]
-    );
-
-    this.lastName = new FormControl(
-      '',
-      [
-        Validators.minLength(3),
-        Validators.maxLength(150),
-        Validators.required
-      ]
-    );
-
-    this.nic = new FormControl(
-      '', [
-        Validators.minLength(10),
-        Validators.maxLength(10),
-        Validators.required
-      ]
-    );
-
-    this.email = new FormControl(
-      '', [
-        Validators.required,
-        Validators.pattern(EMAIL_REGEX)
-      ]
-    );
-
-    this.address = new FormControl(
-      '', [
-        Validators.required,
-        Validators.minLength(10)
-      ]
-    );
-  }
-
-  private createForm() {
-    this.lecturerSaveForm = new FormGroup({
-      firstName: this.firstName,
-      lastName: this.lastName,
-      nic: this.nic,
-      email: this.email,
-      address: this.address
-    });
   }
 
   private saveLecturer() {
     if (this.lecturerSaveForm.valid) {
-      console.log("Form Submitted!");
-      console.log(this.lecturerSaveForm.value);
-      this.lecturerSaveForm.reset();
+      var lecturerSavePromise = this.lecturerService.saveLecturer(this.lecturer);
+      lecturerSavePromise
+        .then(_ => {
+          console.log('success');
+          this.lecturerSaveForm.reset();
+          this.router.navigate(['lecturer']);
+        })
+        .catch(err => console.log(err, 'something went wrong!!'));
     }
   }
 

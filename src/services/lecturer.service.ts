@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
+import { Lecturer } from './../models/Lecturer';
+
+
 @Injectable()
 export class LecturerService {
 
@@ -19,8 +22,8 @@ export class LecturerService {
     return lecturers;
   }
 
-  public saveLecturer(){
-    var lecturers = this.fireDb.list('/lecturer')
+  public saveLecturer(lecturer: Lecturer){
+    return this.fireDb.list('/lecturer').push(lecturer);
   }
 
 }

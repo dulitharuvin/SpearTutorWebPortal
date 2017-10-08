@@ -1,5 +1,5 @@
 export class Lecturer {
-    
+
     public firstName: string;
     public lastName: string;
     public nic: string;
@@ -8,5 +8,6 @@ export class Lecturer {
     public expired: number;
 
     constructor() {
+        this.expired = 0;
     }
 }
