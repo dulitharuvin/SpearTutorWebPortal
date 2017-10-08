@@ -29,14 +29,13 @@ export class LecturerSaveFormComponent implements OnInit {
 
   saveLecturer() {
     if (this.lecturerSaveForm.valid) {
-      var lecturerSavePromise = this.lecturerService.saveLecturer(this.lecturer);
+      const lecturerSavePromise = this.lecturerService.saveLecturer(this.lecturer);
       lecturerSavePromise
         .then(_ => {
           console.log('success');
           this.lecturerSaveForm.reset();
           this.router.navigate(['lecturer']);
-        })
-        .catch(err => console.log(err, 'something went wrong!!'));
+        });
     }
   }
 

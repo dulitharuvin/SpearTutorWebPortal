@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 import { Lecturer } from './../models/Lecturer';
 
@@ -12,17 +12,12 @@ export class LecturerService {
   }
 
   public getAllTheActiveLecturers() {
-    var lecturers = this.fireDb.list('/lecturer', {
-      query: {
-        orderByChild: 'expired',
-        equalTo: 0
-      }
-    });
-
+    var lecturers = this.fireDb.list('/lecturer', 
+      ref => ref.orderByChild('expired').equalTo(0)).valueChanges();
     return lecturers;
   }
 
-  public saveLecturer(lecturer: Lecturer){
+  public saveLecturer(lecturer: Lecturer) {
     return this.fireDb.list('/lecturer').push(lecturer);
   }
 
