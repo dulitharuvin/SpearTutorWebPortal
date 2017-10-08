@@ -11,7 +11,7 @@ import { Lecturer } from './../../../../models/Lecturer';
 })
 export class LecturerListComponent implements OnInit {
 
-  lecturers: Observable<Lecturer[]>;
+  lecturers: Observable<any[]>;
 
   constructor(private lecturerService: LecturerService) {
     this.getAllTheActiveLecturers();

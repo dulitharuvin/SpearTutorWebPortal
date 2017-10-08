@@ -12,7 +12,7 @@ export class LecturerService {
   }
 
   public getAllTheActiveLecturers() {
-    var lecturers = this.fireDb.list('/lecturer', 
+    var lecturers = this.fireDb.list<Lecturer>('/lecturer', 
       ref => ref.orderByChild('expired').equalTo(0)).valueChanges();
     return lecturers;
   }
