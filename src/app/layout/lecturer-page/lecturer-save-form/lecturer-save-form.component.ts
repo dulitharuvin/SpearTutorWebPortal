@@ -12,19 +12,13 @@ import { EMAIL_REGEX } from './../../../shared/constants/constants';
 })
 export class LecturerSaveFormComponent implements OnInit {
 
-  private lecturer: Lecturer;
+  lecturer: Lecturer;
   private EMAIL_REGEX: string;
 
   @ViewChild('lecturerSaveForm') lecturerSaveForm: any;
 
-  private firstName: FormControl;
-  private lastName: FormControl;
-  private nic: FormControl;
-  private email: FormControl;
-  private address: FormControl;
-
   constructor(private lecturerService: LecturerService,
-  private router: Router) {
+    private router: Router) {
     this.lecturer = new Lecturer();
     this.EMAIL_REGEX = EMAIL_REGEX;
   }
@@ -33,7 +27,7 @@ export class LecturerSaveFormComponent implements OnInit {
 
   }
 
-  private saveLecturer() {
+  saveLecturer() {
     if (this.lecturerSaveForm.valid) {
       var lecturerSavePromise = this.lecturerService.saveLecturer(this.lecturer);
       lecturerSavePromise

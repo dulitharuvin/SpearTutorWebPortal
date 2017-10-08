@@ -10,7 +10,7 @@ import { Lecturer } from './../../../../models/Lecturer';
 })
 export class LecturerListComponent implements OnInit {
 
-  private lecturers: FirebaseListObservable<Lecturer[]>;
+  lecturers: FirebaseListObservable<Lecturer[]>;
 
   constructor(private lecturerService: LecturerService) {
     this.getAllTheActiveLecturers();
