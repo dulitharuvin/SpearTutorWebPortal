@@ -8,7 +8,6 @@
         <table class="table table-hover table-striped">
           <thead>
             <tr>
-              <th>Key</th>
               <th>First Name</th>
               <th>Last Name</th>
               <th>Email</th>
@@ -18,7 +17,6 @@
           </thead>
           <tbody>
             <tr *ngFor="let lecturer of lecturers | async">
-              <td>{{lecturer.$key}}</td>
               <td>{{lecturer.firstName}}</td>
               <td>{{lecturer.lastName}}</td>
               <td>{{lecturer.email}}</td>
