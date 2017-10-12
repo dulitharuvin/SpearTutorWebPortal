@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PageHeaderModule } from './../../shared';
+import { LecturerPageRoutingModule } from './lecturer-page-routing.module';
 
 import { LecturerPageComponent } from './lecturer-page.component';
-import { LecturerPageRoutingModule } from './lecturer-page-routing.module';
+import { LecturerListComponent } from './lecturer-list/lecturer-list.component';
 import { LecturerSaveFormComponent } from './lecturer-save-form/lecturer-save-form.component';
-import { PageHeaderModule } from './../../shared';
 
 import { LecturerService } from './../../../services/lecturer.service';
-import { LecturerListComponent } from './lecturer-list/lecturer-list.component';
 
 @NgModule({
   imports: [

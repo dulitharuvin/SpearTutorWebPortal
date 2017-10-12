@@ -4,11 +4,12 @@ import { LayoutComponent } from './layout.component';
 
 const routes: Routes = [
     {
-        path: '', 
+        path: '',
         component: LayoutComponent,
         children: [
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
-            { path: 'lecturer', loadChildren: './lecturer-page/lecturer-page.module#LecturerPageModule' }
+            { path: 'lecturer', loadChildren: './lecturer-page/lecturer-page.module#LecturerPageModule' },
+            { path: 'user', loadChildren: './user-page/user-page.module#UserPageModule' }
         ]
     }
 ];
