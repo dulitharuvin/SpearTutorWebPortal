@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { PageHeaderModule } from './../../shared';
 import { LecturerPageRoutingModule } from './lecturer-page-routing.module';
 
@@ -14,7 +14,6 @@ import { LecturerService } from './../../../services/lecturer.service';
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
     LecturerPageRoutingModule,
     PageHeaderModule
   ],

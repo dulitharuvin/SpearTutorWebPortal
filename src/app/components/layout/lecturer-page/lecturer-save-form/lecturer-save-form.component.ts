@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { LecturerService } from './../../../../services/lecturer.service';
 import { Lecturer } from './../../../../models/lecturer';

@@ -12,12 +12,7 @@ export class User {
     address: string;
     roles: Roles;
 
-    constructor(user: User) {
-        this.email = user.email;
-        this.firstName = user.firstName;
-        this.lastName = user.lastName;
-        this.nic = user.nic;
-        this.address = user.address;
+    constructor() {
         this.roles = { lecturer: true }
     }
 }

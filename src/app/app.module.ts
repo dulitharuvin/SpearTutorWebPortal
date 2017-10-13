@@ -14,7 +14,6 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { AuthGuard } from './components/shared';
 import { AuthService } from './services/auth.service';
-import { UserService } from './services/user.service';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
@@ -46,8 +45,7 @@ export function HttpLoaderFactory(http: Http) {
     ],
     providers: [
         AuthGuard,
-        AuthService,
-        UserService
+        AuthService
     ],
     bootstrap: [AppComponent]
 })
