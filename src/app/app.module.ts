@@ -12,8 +12,10 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-import { AuthGuard } from './shared';
-import { AuthService } from './../services/auth.service';
+import { AuthGuard } from './components/shared';
+import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
     // for development
@@ -44,7 +46,8 @@ export function HttpLoaderFactory(http: Http) {
     ],
     providers: [
         AuthGuard,
-        AuthService
+        AuthService,
+        UserService
     ],
     bootstrap: [AppComponent]
 })

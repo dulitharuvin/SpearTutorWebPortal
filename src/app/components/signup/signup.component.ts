@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, Validators } from '@angular/forms';
-import { routerTransition } from '../router.animations';
+import { routerTransition } from './../../router.animations';
 import { AuthService } from './../../services/auth.service';
 
 @Component({
