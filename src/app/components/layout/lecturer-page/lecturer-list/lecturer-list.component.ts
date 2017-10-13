@@ -3,7 +3,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 
 import { LecturerService } from './../../../../services/lecturer.service';
-import { Lecturer } from './../../../../models/Lecturer';
+import { Lecturer } from './../../../../models/lecturer';
 
 @Component({
   selector: 'app-lecturer-list',

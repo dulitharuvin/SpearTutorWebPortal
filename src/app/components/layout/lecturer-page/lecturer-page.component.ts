@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { routerTransition } from './../../../router.animations';
+import { slideToRight } from './../../../router.animations';
 
 @Component({
   selector: 'app-lecturer-page',
   templateUrl: './lecturer-page.component.html',
   styleUrls: ['./lecturer-page.component.scss'],
-  animations: [routerTransition()]
+  animations: [slideToRight()]
 })
 export class LecturerPageComponent implements OnInit {
 
