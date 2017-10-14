@@ -13,7 +13,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { AuthGuard } from './components/shared';
-import { AuthService } from './services/auth.service';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
@@ -44,8 +43,7 @@ export function HttpLoaderFactory(http: Http) {
         AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     ],
     providers: [
-        AuthGuard,
-        AuthService
+        AuthGuard
     ],
     bootstrap: [AppComponent]
 })
