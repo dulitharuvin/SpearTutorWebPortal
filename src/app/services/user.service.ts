@@ -14,6 +14,7 @@ import 'rxjs/add/operator/switchMap';
 export class UserService {
 
   user: User = null;
+  authstateRegister: firebase.User = null;
   authState: firebase.User = null;
   userRef: AngularFireObject<any>;
 
@@ -46,11 +47,15 @@ export class UserService {
     return this.authenticated ? this.authState.uid : '';
   }
 
+  get registeredUserUid(): string{
+    return this.authstateRegister != null ? this.authstateRegister.uid : '';
+  }
 
   registerUser(user: User) {
     this.user = user;
     return this.firebaseAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
       .then((user) => {
+        this.authstateRegister = user;
         this.updateUserData();
       })
       .catch(error => console.log(error));
@@ -82,13 +87,8 @@ export class UserService {
     // Writes user name and email to realtime db
     // useful if your app displays information about users or for admin features
 
-    const path = `users/${this.currentUserId}`; // Endpoint on firebase
+    const path = `users/${this.registeredUserUid}`; // Endpoint on firebase
     const userRef: AngularFireObject<any> = this.fireDb.object(path);
-
-    const data = {
-      email: this.authState.email,
-      name: this.authState.displayName
-    }
 
     userRef.update(this.user)
       .catch(error => console.log(error));
