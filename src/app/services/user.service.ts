@@ -65,6 +65,7 @@ export class UserService {
     return this.firebaseAuth.auth.signInWithEmailAndPassword(email, password)
       .then((user) => {
         this.authState = user
+        return this.authState;
       })
       .catch(error => console.log(error));
   }

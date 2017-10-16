@@ -6,20 +6,18 @@
             <form role="form" #userSignUpForm="ngForm" novalidate (ngSubmit)="signup()">
                 <div class="form-content">
                     <div class="form-group">
-                        <input type="text" class="form-control input-underline input-lg" placeholder="Full Name" id="fullName" name="fullName" [(ngModel)]="fullName">
+                        <input type="text" class="form-control input-underline input-lg" placeholder="Full Name" id="fullName" name="fullName">
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control input-underline input-lg" placeholder="Email" id="email" name="email" [(ngModel)]="email">
+                        <input type="text" class="form-control input-underline input-lg" placeholder="Email" id="email" name="email">
                     </div>
 
                     <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" placeholder="Password" id="password" name="password"
-                            [(ngModel)]="password">
+                        <input type="password" class="form-control input-underline input-lg" placeholder="Password" id="password" name="password">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" placeholder="Repeat Password" id="repeatPassword" name="repeatPassword"
-                            [(ngModel)]="repeatPassword">
+                        <input type="password" class="form-control input-underline input-lg" placeholder="Repeat Password" id="repeatPassword" name="repeatPassword">
                     </div>
                 </div>
                 <button type="submit" class="btn rounded-btn" [disabled]="userSignUpForm.invalid">Submit</button>&nbsp;
