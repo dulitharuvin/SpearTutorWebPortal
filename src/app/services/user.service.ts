@@ -17,13 +17,17 @@ export class UserService {
   authstateRegister: firebase.User = null;
   authState: firebase.User = null;
   userRef: AngularFireObject<any>;
+  userRefLogedIn: AngularFireObject<any>;
 
   constructor(private firebaseAuth: AngularFireAuth,
     private fireDb: AngularFireDatabase,
     private router: Router) {
 
     this.firebaseAuth.authState.subscribe((auth) => {
-      this.authState = auth
+      if(auth){
+          this.authState = auth;
+          this.userRefLogedIn = this.fireDb.object(`users/${this.currentUserId}`);
+      }
     });
   }
 

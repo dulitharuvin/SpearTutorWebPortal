@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit {
 
     loginUser() {
         this.userService.emailLogin(this.email,this.password).then(response=>{
-            console.log(response);
             localStorage.setItem('isLoggedin', 'true');
             this.router.navigate(['/dashboard']);
         })

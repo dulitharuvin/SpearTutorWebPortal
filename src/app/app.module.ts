@@ -14,6 +14,9 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { AuthGuard } from './components/shared';
 
+import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
     // for development
@@ -43,6 +46,8 @@ export function HttpLoaderFactory(http: Http) {
         AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     ],
     providers: [
+        AuthService,
+        UserService,
         AuthGuard
     ],
     bootstrap: [AppComponent]
