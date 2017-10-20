@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireObject, AngularFireList } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { User } from './../models/user';
@@ -18,6 +18,7 @@ export class UserService {
   authState: firebase.User = null;
   userRef: AngularFireObject<any>;
   userRefLogedIn: AngularFireObject<any>;
+  rolesRefLogedIn: AngularFireObject<any>;
 
   constructor(private firebaseAuth: AngularFireAuth,
     private fireDb: AngularFireDatabase,
@@ -27,6 +28,11 @@ export class UserService {
       if(auth){
           this.authState = auth;
           this.userRefLogedIn = this.fireDb.object(`users/${this.currentUserId}`);
+          this.rolesRefLogedIn = this.fireDb.object(`users/${this.currentUserId}/roles`);
+          this.rolesRefLogedIn.valueChanges()
+          .subscribe((roles)=>{
+            console.log("logged in user roles" + JSON.stringify(roles));
+          });
       }
     });
   }
@@ -68,7 +74,8 @@ export class UserService {
   emailLogin(email: string, password: string) {
     return this.firebaseAuth.auth.signInWithEmailAndPassword(email, password)
       .then((user) => {
-        this.authState = user
+        this.authState = user;
+        localStorage.setItem('authenticated', JSON.stringify(this.authenticated));
         return this.authState;
       })
       .catch(error => console.log(error));
@@ -85,7 +92,8 @@ export class UserService {
 
   signOut(): void {
     this.firebaseAuth.auth.signOut();
-    this.router.navigate(['/'])
+    localStorage.clear();
+    this.router.navigate(['/login']);
   }
 
   private updateUserData(): void {

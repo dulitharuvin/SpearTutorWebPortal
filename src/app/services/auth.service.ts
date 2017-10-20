@@ -11,6 +11,7 @@ export class AuthService {
 
   constructor(private fireDb: AngularFireDatabase,
     private userService: UserService) {
+      //TO-DO: this if is useless remove
     if (this.userService.authenticated) {
       userService.userRefLogedIn.valueChanges().map(user => {
         return this.userRoles = _.keys(_.get(user, 'roles'))

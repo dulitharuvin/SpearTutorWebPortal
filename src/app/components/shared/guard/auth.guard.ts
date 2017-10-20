@@ -20,22 +20,8 @@ export class AuthGuard implements CanActivate {
     canActivate(
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean> | boolean {
-        if (this.userService.authenticated) {
-            console.log('my roles ' + this.authService.userRoles);
-            
-            console.log('my authguard ' + this.userService.currentUserId);
-            this.userService.userRefLogedIn.valueChanges()
-                .take(1)
-                .map(user => _.has(_.get(user, 'roles'), 'admin'))
-                .do(authorized => {
-                    if (!authorized) {
-                        console.log('route prevented!')
-                        this.router.navigate(['/login']);
-                        return false;
-                    }
-                    this.router.navigate(['/not-found']);
-                    return true;
-                })
+        if (JSON.parse(localStorage.getItem("authenticated"))) {
+            return true;
         }
         this.router.navigate(['/login']);
         return false;
