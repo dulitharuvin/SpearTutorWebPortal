@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 
-import { UserService } from './../../services/user.service';
+import { AuthService } from './../../services/auth.service';
 
 @NgModule({
     imports: [
@@ -14,8 +14,8 @@ import { UserService } from './../../services/user.service';
         LoginRoutingModule
     ],
     declarations: [LoginComponent],
-    providers:[
-        UserService
+    providers: [
+        AuthService
     ]
 })
 export class LoginModule {
