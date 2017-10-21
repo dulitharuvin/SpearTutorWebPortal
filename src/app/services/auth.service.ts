@@ -29,7 +29,9 @@ export class AuthService {
         localStorage.setItem('authenticated', JSON.stringify(this.authenticated));
         return this.authState;
       })
-      .catch(error => console.log(error));
+      .catch(function(error){
+        throw error;
+      });
   }
 
   get authenticated(): boolean {
