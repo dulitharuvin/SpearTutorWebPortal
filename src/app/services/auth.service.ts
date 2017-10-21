@@ -50,22 +50,29 @@ export class AuthService {
     return this.fireAuth.authState
   }
 
+  get currentUserRolesObservable(): Observable<any> {
+    this.currentUserObservable.subscribe((auth) => {
+      return this.fireDb.object(`user/${auth.uid}/roles`).valueChanges();
+    });
+    return new Observable(null);
+  }
+
   ///// Authorization Logic /////
-  get hasAdminAccess(): boolean {
+  hasAdminAccess(roles: string[]): boolean {
     const allowed = ['admin']
-    return this.matchingRole(allowed)
+    return this.matchingRole(allowed,roles)
   }
-  get hassModeratorAccess(): boolean {
+  hassModeratorAccess(roles: string[]): boolean {
     const allowed = ['moderator']
-    return this.matchingRole(allowed)
+    return this.matchingRole(allowed,roles)
   }
-  get hasLecturerAccess(): boolean {
+  hasLecturerAccess(roles: string[]): boolean {
     const allowed = ['lecturer']
-    return this.matchingRole(allowed)
+    return this.matchingRole(allowed,roles)
   }
   /// Helper to determine if any matching roles exist
-  private matchingRole(allowedRoles): boolean {
-    return !_.isEmpty(_.intersection(allowedRoles, this.userRoles))
+  private matchingRole(allowedRoles,roles): boolean {
+    return !_.isEmpty(_.intersection(allowedRoles, roles))
   }
 
 }
