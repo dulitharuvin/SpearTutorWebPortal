@@ -14,21 +14,25 @@ export class AuthGuard implements CanActivate {
     constructor(private authService: AuthService,
         private userService: UserService,
         private router: Router) {
+
     }
 
     canActivate(
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean> | boolean {
-        if (this.authService.authenticated) { return true; }
-
-        return this.authService.currentUserObservable
-            .take(1)
-            .map(user => !!user)
-            .do(loggedIn => {
-                if (!loggedIn) {
-                    console.log("access denied")
-                    this.router.navigate(['/login']);
-                }
-            })
+        if (JSON.parse(localStorage.getItem("authenticated"))) {
+            return true;
+        }
+        this.router.navigate(['/login']);
+        return false;
     }
+
+    // canActivate() {
+    //     if (localStorage.getItem('isLoggedin')) {
+    //         return true;
+    //     }
+
+    //     this.router.navigate(['/login']);
+    //     return false;
+    // }
 }
