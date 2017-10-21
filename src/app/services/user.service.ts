@@ -78,7 +78,9 @@ export class UserService {
         localStorage.setItem('authenticated', JSON.stringify(this.authenticated));
         return this.authState;
       })
-      .catch(error => console.log(error));
+      .catch(function(error){
+        throw error;
+      });
   }
 
   // Sends email allowing user to reset password

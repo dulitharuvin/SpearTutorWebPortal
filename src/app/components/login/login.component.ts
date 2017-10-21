@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
 
     email: string;
     password: string;
+    showError : boolean;
+    error : string;
 
     constructor(public router: Router,
         private userService: UserService) {
@@ -28,7 +30,12 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('isLoggedin', 'true');
             this.router.navigate(['/dashboard']);
         })
-        .catch(error => console.log(error));
+        .catch(error => this.handleError(error));        
+    }
+
+    handleError(error: any){
+        this.error = error.message;
+        this.showError = true;
     }
 
 }

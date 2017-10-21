@@ -4,6 +4,7 @@
             <img src="assets/images/logo.png" width="150px" class="user-avatar" />
             <h1>SPEAR360° Tutor</h1>
             <form role="form" #loginForm="ngForm" novalidate (ngSubmit)="loginUser()">
+                <p id="lblError" [hidden]="!showError">{{error}}</p>
                 <div class="form-content">
                     <div class="form-group">
                         <input type="text" class="form-control input-underline input-lg" id="email" name="email" placeholder="Email" [(ngModel)]="email">
