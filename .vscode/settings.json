@@ -1,5 +1,5 @@
 {
-    // The following will hide the js and map files in the editor
+    // The following will hide the spec.ts files in the editor
     "files.exclude": {
         "**/*spec.ts": true
     }
