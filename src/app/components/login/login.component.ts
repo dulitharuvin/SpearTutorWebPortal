@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from './../../router.animations';
 
-import { UserService } from './../../services/user.service';
+import { AuthService } from './../../services/auth.service';
 
 @Component({
     selector: 'app-login',
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
     password: string;
 
     constructor(public router: Router,
-        private userService: UserService) {
+        private authService: AuthService) {
 
     }
 
@@ -24,11 +24,11 @@ export class LoginComponent implements OnInit {
     }
 
     loginUser() {
-        this.userService.emailLogin(this.email,this.password).then(response=>{
+        this.authService.emailLogin(this.email, this.password).then(response => {
             localStorage.setItem('isLoggedin', 'true');
             this.router.navigate(['/dashboard']);
         })
-        .catch(error => console.log(error));
+            .catch(error => console.log(error));
     }
 
 }
