@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, Directive } from '@angular/core';
 import { UserService } from './../../../../services/user.service';
 import { User } from './../../../../models/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-save-form',
@@ -10,10 +11,9 @@ import { User } from './../../../../models/user';
 export class UserSaveFormComponent implements OnInit {
 
   @ViewChild('userSaveForm') userSignUpForm: any;
-
   user: User;  
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
     
   }
 
@@ -22,7 +22,13 @@ export class UserSaveFormComponent implements OnInit {
   }
 
   registerUser() {
-    this.userService.registerUser(this.user);
+    const userSavePromise = this.userService.registerUser(this.user);
+    userSavePromise
+    .then(_ => {
+      console.log('success');
+      this.userSignUpForm.reset();
+      this.router.navigate(['user']);
+    });
   }
 
 }
