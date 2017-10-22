@@ -7,10 +7,10 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 
 import { AuthService } from './../../../services/auth.service';
-import { ROLE_ADMIN } from './../constants/constants';
+import { ROLE_MODERATOR } from './../constants/constants';
 
 @Injectable()
-export class AdminGuard implements CanActivate {
+export class ModeratorGuard implements CanActivate {
 
   constructor(private authService: AuthService,
     private router: Router) {
@@ -21,7 +21,7 @@ export class AdminGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     return this.authService.currentUserRolesObservable
       .take(1)
-      .map(roles => _.has(_.pickBy(roles, function (o) { return o == true }), ROLE_ADMIN))
+      .map(roles => _.has(_.pickBy(roles, function (o) { return o == true }), ROLE_MODERATOR))
       .do(authorized => {
         if (!authorized) {
           console.log('route prevented!');
