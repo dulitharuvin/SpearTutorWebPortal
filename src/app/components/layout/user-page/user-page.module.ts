@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PageHeaderModule } from './../../shared';
 import { UserPageRoutingModule } from './user-page-routing.module';
+import { FormValidatorModule } from './../../../Helpers/form-validator.module';
 
 import { UserPageComponent } from './user-page.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserSaveFormComponent } from './user-save-form/user-save-form.component';
-import { EmailValidator , NicValidator , TelephoneValidator , PasswordValidator} from './../../../Helpers/form-validators';
 import { UserService } from './../../../services/user.service';
 
 @NgModule({
@@ -15,16 +15,13 @@ import { UserService } from './../../../services/user.service';
     CommonModule,
     UserPageRoutingModule,
     PageHeaderModule,
-    FormsModule
+    FormsModule,
+    FormValidatorModule
   ],
   declarations: [
     UserPageComponent,
     UserListComponent,
-    UserSaveFormComponent,
-    EmailValidator,
-    NicValidator,
-    TelephoneValidator,
-    PasswordValidator
+    UserSaveFormComponent
   ],
   providers: [
     UserService
