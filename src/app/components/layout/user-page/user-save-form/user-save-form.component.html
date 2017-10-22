@@ -33,11 +33,11 @@
               'has-danger': nic.invalid && (nic.dirty || nic.touched), 
               'has-success': nic.valid && (nic.dirty || nic.touched)}">
               <label class="form-control-label" for="nic">NIC</label>
-              <input type="text" class="form-control" id="nic" name="nic" [(ngModel)]="user.nic" required minlength="10" maxlength="10"
+              <input type="text" class="form-control" nicvalidator id="nic" name="nic" [(ngModel)]="user.nic" required minlength="10" maxlength="10"
                 #nic="ngModel">
               <div class="form-control-feedback" *ngIf="nic.errors && (nic.dirty || nic.touched)">
                 <p *ngIf="nic.errors.required">NIC is required</p>
-                <p *ngIf="nic.errors.minlength">Please provide a valid nic</p>
+                <p *ngIf="nic.errors.nicvalidator">Please provide a valid nic</p>
               </div>
             </div> 
   
