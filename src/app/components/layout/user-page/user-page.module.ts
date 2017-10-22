@@ -6,7 +6,7 @@ import { UserPageRoutingModule } from './user-page-routing.module';
 
 import { UserPageComponent } from './user-page.component';
 import { UserListComponent } from './user-list/user-list.component';
-import { UserSaveFormComponent } from './user-save-form/user-save-form.component';
+import { UserSaveFormComponent , EmailValidator } from './user-save-form/user-save-form.component';
 
 import { UserService } from './../../../services/user.service';
 
@@ -20,7 +20,8 @@ import { UserService } from './../../../services/user.service';
   declarations: [
     UserPageComponent,
     UserListComponent,
-    UserSaveFormComponent
+    UserSaveFormComponent,
+    EmailValidator
   ],
   providers: [
     UserService
