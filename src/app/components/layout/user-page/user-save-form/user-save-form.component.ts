@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-
+import { Component, OnInit, ViewChild, Directive } from '@angular/core';
 import { UserService } from './../../../../services/user.service';
 import { User } from './../../../../models/user';
 
@@ -7,17 +6,19 @@ import { User } from './../../../../models/user';
   selector: 'app-user-save-form',
   templateUrl: './user-save-form.component.html'
 })
+
 export class UserSaveFormComponent implements OnInit {
 
   @ViewChild('userSaveForm') userSignUpForm: any;
 
-  user: User;
+  user: User;  
 
   constructor(private userService: UserService) {
-    this.user = new User();
+    
   }
 
   ngOnInit() {
+    this.user = new User();
   }
 
   registerUser() {
@@ -25,3 +26,5 @@ export class UserSaveFormComponent implements OnInit {
   }
 
 }
+
+

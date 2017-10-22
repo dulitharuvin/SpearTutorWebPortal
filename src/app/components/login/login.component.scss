@@ -60,6 +60,17 @@ $topnav-background-color: #222;
             color: rgba(255,255,255,0.7);
         }
     }
+    
+    #lblError{
+        font-weight: 100;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        font-size: 15px;
+        small {
+            color: rgba(254, 3, 3, 0.70);
+        }
+    }
+
 
     .form-group {
         padding: 8px 0;

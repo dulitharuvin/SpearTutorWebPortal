@@ -5,6 +5,7 @@
             <h1>SPEAR360° Tutor</h1>
             <form role="form" #loginForm="ngForm" novalidate (ngSubmit)="loginUser()">
                 <div class="form-content">
+                    <p id="lblError" [hidden]="!showError">{{error}}</p>                        
                     <div class="form-group">
                         <input type="text" class="form-control input-underline input-lg" id="email" name="email" placeholder="Email" [(ngModel)]="email">
                     </div>
