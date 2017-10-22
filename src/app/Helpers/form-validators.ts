@@ -131,4 +131,44 @@ export class EmailValidator implements Validator {
     }
    }
 
+   @Directive({
+    selector: '[passwordvalidator][ngModel]',
+    providers: [
+      {
+        provide: NG_VALIDATORS,
+        useExisting: PasswordValidator,
+        multi: true
+      }
+    ]
+  })
+
+   export class PasswordValidator implements Validator {
+    validator: ValidatorFn;
+    
+    constructor() {
+      this.validator = passwordValidator();
+    }
+    
+    validate(c: FormControl) {
+      return this.validator(c);
+    }
+  }   
+  
+  function passwordValidator() : ValidatorFn {
+    return (c: FormControl) => {
+      
+      let isValid = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/.test(c.value);
+      
+      if(isValid) {
+        return null;
+      } else {
+        return {
+          passwordvalidator : {
+            valid: false
+          }
+        };
+      }
+    }
+   }
+
    

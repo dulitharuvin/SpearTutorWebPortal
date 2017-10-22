@@ -52,6 +52,18 @@
                 <p *ngIf="email.errors.emailvalidator">Please provide a valid email address</p>
               </div>
             </div>
+            
+            <div class="form-group" [ngClass]="{
+              'has-danger': password.invalid && (password.dirty || password.touched), 
+              'has-success': password.valid && (password.dirty || password.touched)}">
+              <label class="form-control-label" for="password">Password</label>
+              <input type="password" class="form-control" id="password" name="password" passwordvalidator [(ngModel)]="user.password" required 
+                #password="ngModel">
+              <div class="form-control-feedback" *ngIf="password.errors && (password.dirty || password.touched)">
+                <p *ngIf="password.errors.required">Password is required</p>
+                <p *ngIf="password.errors.passwordvalidator">Password needs to contain minimum eight characters, at least one letter, one number and one special character</p>
+              </div>
+            </div>
 
             <div class="form-group" [ngClass]="{
               'has-danger': telephone.invalid && (telephone.dirty || telephone.touched), 
