@@ -91,4 +91,44 @@ export class EmailValidator implements Validator {
     }
    }
 
+   @Directive({
+    selector: '[telephonevalidator][ngModel]',
+    providers: [
+      {
+        provide: NG_VALIDATORS,
+        useExisting: TelephoneValidator,
+        multi: true
+      }
+    ]
+  })
+
+ export class TelephoneValidator implements Validator {
+    validator: ValidatorFn;
+    
+    constructor() {
+      this.validator = telephoneValidator();
+    }
+    
+    validate(c: FormControl) {
+      return this.validator(c);
+    }
+  }   
+  
+  function telephoneValidator() : ValidatorFn {
+    return (c: FormControl) => {
+      
+      let isValid = /^(()?\d{3}())?(-|\s)?\d{3}(-|\s)?\d{4}$/.test(c.value);
+      
+      if(isValid) {
+        return null;
+      } else {
+        return {
+          telephonevalidator : {
+            valid: false
+          }
+        };
+      }
+    }
+   }
+
    

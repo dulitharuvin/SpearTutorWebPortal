@@ -7,7 +7,7 @@ import { UserPageRoutingModule } from './user-page-routing.module';
 import { UserPageComponent } from './user-page.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserSaveFormComponent } from './user-save-form/user-save-form.component';
-import { EmailValidator , NicValidator} from './../../../Helpers/form-validators';
+import { EmailValidator , NicValidator , TelephoneValidator} from './../../../Helpers/form-validators';
 import { UserService } from './../../../services/user.service';
 
 @NgModule({
@@ -22,7 +22,8 @@ import { UserService } from './../../../services/user.service';
     UserListComponent,
     UserSaveFormComponent,
     EmailValidator,
-    NicValidator
+    NicValidator,
+    TelephoneValidator
   ],
   providers: [
     UserService

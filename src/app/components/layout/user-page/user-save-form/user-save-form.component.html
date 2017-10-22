@@ -52,6 +52,18 @@
                 <p *ngIf="email.errors.emailvalidator">Please provide a valid email address</p>
               </div>
             </div>
+
+            <div class="form-group" [ngClass]="{
+              'has-danger': telephone.invalid && (telephone.dirty || telephone.touched), 
+              'has-success': telephone.valid && (telephone.dirty || telephone.touched)}">
+              <label class="form-control-label" for="telephone">Telephone</label>
+              <input type="text" class="form-control" id="telephone" name="telephone" telephonevalidator [(ngModel)]="user.telephone.personal" required 
+                #telephone="ngModel">
+              <div class="form-control-feedback" *ngIf="telephone.errors && (telephone.dirty || telephone.touched)">
+                <p *ngIf="telephone.errors.required">Telephone is required</p>
+                <p *ngIf="telephone.errors.telephonevalidator">Please provide a valid telephone number</p>
+              </div>
+            </div>
   
            <div class="form-group" [ngClass]="{
               'has-danger': address.invalid && (address.dirty || address.touched), 
