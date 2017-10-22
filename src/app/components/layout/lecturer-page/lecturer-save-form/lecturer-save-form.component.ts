@@ -19,7 +19,6 @@ export class LecturerSaveFormComponent implements OnInit {
   constructor(private lecturerService: LecturerService,
     private router: Router) {
     this.lecturer = new Lecturer();
-    this.EMAIL_REGEX = EMAIL_REGEX;
   }
 
   ngOnInit() {
