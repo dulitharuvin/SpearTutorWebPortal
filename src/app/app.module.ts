@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Http, HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,7 +12,11 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-import { AuthGuard } from './shared';
+import { AuthGuard, AdminGuard } from './components/shared';
+
+import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
     // for development
@@ -27,6 +31,7 @@ export function HttpLoaderFactory(http: Http) {
         BrowserModule,
         BrowserAnimationsModule,
         FormsModule,
+        ReactiveFormsModule,
         HttpModule,
         AppRoutingModule,
         TranslateModule.forRoot({
@@ -40,7 +45,12 @@ export function HttpLoaderFactory(http: Http) {
         AngularFireDatabaseModule, // imports firebase/database, only needed for database features
         AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     ],
-    providers: [AuthGuard],
+    providers: [
+        AuthService,
+        UserService,
+        AuthGuard,
+        AdminGuard
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

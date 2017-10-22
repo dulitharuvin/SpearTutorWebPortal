@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="col col-xl-12 col-lg-12">
+    <div class="card mb-3">
+      <div class="card-block">
+        <form role="form" #lecturerSaveForm="ngForm" novalidate (ngSubmit)="saveLecturer()">
+
+          <div class="form-group" [ngClass]="{
+            'has-danger': firstName.invalid && (firstName.dirty || firstName.touched), 
+            'has-success': firstName.valid && (firstName.dirty || firstName.touched)}">
+            <label class="form-control-label" for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="lecturer.firstName" required minlength="3"
+              maxlength="50" #firstName="ngModel">
+            <div class="form-control-feedback" *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+              <p *ngIf="firstName.errors.required">First Name is required</p>
+              <p *ngIf="firstName.errors.minlength">First Name must be at least 3 characters long</p>
+            </div>
+          </div>
+
+          <div class="form-group" [ngClass]="{
+            'has-danger': lastName.invalid && (lastName.dirty || lastName.touched), 
+            'has-success': lastName.valid && (lastName.dirty || lastName.touched)}">
+            <label class="form-control-label" for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="lecturer.lastName" required minlength="3"
+              maxlength="150" #lastName="ngModel">
+            <div class="form-control-feedback" *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
+              <p *ngIf="lastName.errors.required">Last Name is required</p>
+              <p *ngIf="lastName.errors.minlength">Last Name must be at least 3 characters long</p>
+            </div>
+          </div>
+
+          <div class="form-group" [ngClass]="{
+            'has-danger': nic.invalid && (nic.dirty || nic.touched), 
+            'has-success': nic.valid && (nic.dirty || nic.touched)}">
+            <label class="form-control-label" for="nic">NIC</label>
+            <input type="text" class="form-control" id="nic" name="nic" [(ngModel)]="lecturer.nic" required minlength="10" maxlength="10"
+              #nic="ngModel">
+            <div class="form-control-feedback" *ngIf="nic.errors && (nic.dirty || nic.touched)">
+              <p *ngIf="nic.errors.required">NIC is required</p>
+              <p *ngIf="nic.errors.minlength">Please provide a valid nic</p>
+            </div>
+          </div>
+
+          <div class="form-group" [ngClass]="{
+            'has-danger': email.invalid && (email.dirty || email.touched), 
+            'has-success': email.valid && (email.dirty || email.touched)}">
+            <label class="form-control-label" for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="lecturer.email" required pattern="[^ @]*@[^ @]*"
+              #email="ngModel">
+            <div class="form-control-feedback" *ngIf="email.errors && (email.dirty || email.touched)">
+              <p *ngIf="email.errors.required">Email is required</p>
+              <p *ngIf="email.errors.pattern">Please provide a valid email address</p>
+            </div>
+          </div>
+
+          <div class="form-group" [ngClass]="{
+            'has-danger': address.invalid && (address.dirty || address.touched), 
+            'has-success': address.valid && (address.dirty || address.touched)}">
+            <label class="form-control-label" for="address">Adress</label>
+            <textarea class="form-control" id="address" name="address" [(ngModel)]="lecturer.address" required minlength="10" maxlength="500"
+              #address="ngModel"></textarea>
+            <div class="form-control-feedback" *ngIf="address.errors && (address.dirty || address.touched)">
+              <p *ngIf="address.errors.required">Address is required</p>
+              <p *ngIf="address.errors.minlength">Address must be at least 10 characters long</p>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" [disabled]="lecturerSaveForm.invalid">Submit</button>
+          <button type="reset" class="btn btn-secondary">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

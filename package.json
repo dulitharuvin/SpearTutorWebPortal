@@ -4,8 +4,9 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --ec true --port 4201",
+    "start": "node server.js",
     "build": "ng build --prod",
+    "postinstall": "ng build --aot -prod",
     "gitbuild": "ng build --prod --base /start-angular/SB-Admin-BS4-Angular-4/master/dist/",
     "test": "ng test",
     "lint": "ng lint",
@@ -14,8 +15,10 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^4.3.6",
+    "@angular/cli": "1.4.2",
     "@angular/common": "^4.3.6",
     "@angular/compiler": "^4.3.6",
+    "@angular/compiler-cli": "^4.2.4",
     "@angular/core": "^4.3.6",
     "@angular/forms": "^4.3.6",
     "@angular/http": "^4.3.6",
@@ -25,10 +28,12 @@
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.4",
     "@ngx-translate/core": "^7.2.0",
     "@ngx-translate/http-loader": "^0.1.0",
-    "angularfire2": "^4.0.0-rc.2",
+    "angularfire2": "^5.0.0-rc.2",
     "core-js": "^2.5.1",
-    "firebase": "^4.4.0",
+    "express": "^4.16.1",
+    "firebase": "^4.5.0",
     "font-awesome": "^4.7.0",
+    "lodash": "^4.17.4",
     "ng2-charts": "^1.6.0",
     "rxjs": "^5.4.3",
     "zone.js": "^0.8.17"
@@ -53,5 +58,9 @@
     "ts-node": "~3.2.0",
     "tslint": "~5.3.2",
     "typescript": "~2.3.3"
+  },
+  "engines": {
+    "node": "6.11.0",
+    "npm": "3.10.10"
   }
 }
