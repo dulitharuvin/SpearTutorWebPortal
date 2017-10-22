@@ -7,7 +7,7 @@ import { LecturerPageRoutingModule } from './lecturer-page-routing.module';
 import { LecturerPageComponent } from './lecturer-page.component';
 import { LecturerListComponent } from './lecturer-list/lecturer-list.component';
 import { LecturerSaveFormComponent } from './lecturer-save-form/lecturer-save-form.component';
-
+import { EmailValidator , NicValidator , TelephoneValidator , PasswordValidator} from './../../../Helpers/form-validators';
 import { LecturerService } from './../../../services/lecturer.service';
 
 @NgModule({
@@ -20,7 +20,11 @@ import { LecturerService } from './../../../services/lecturer.service';
   declarations: [
     LecturerPageComponent,
     LecturerSaveFormComponent,
-    LecturerListComponent
+    LecturerListComponent,
+    EmailValidator,
+    NicValidator,
+    TelephoneValidator,
+    PasswordValidator
   ],
   providers: [
     LecturerService
