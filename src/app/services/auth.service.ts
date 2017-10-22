@@ -4,15 +4,19 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 
 import * as _ from 'lodash'
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 
 import { UserService } from './user.service';
+import { User } from './../models/user';
 
 @Injectable()
 export class AuthService {
 
   userRoles: Array<string>;
   authState: firebase.User = null;
+
+  user: BehaviorSubject<User> = new BehaviorSubject(null);
 
   constructor(private fireDb: AngularFireDatabase,
     private fireAuth: AngularFireAuth,
@@ -26,7 +30,7 @@ export class AuthService {
     return this.fireAuth.auth.signInWithEmailAndPassword(email, password)
       .then((user) => {
         this.authState = user;
-        localStorage.setItem('authenticated', JSON.stringify(this.authenticated));
+        localStorage.setItem('uid', user.uid);
         return this.authState;
       })
       .catch(function(error){
@@ -52,22 +56,26 @@ export class AuthService {
     return this.fireAuth.authState
   }
 
+  get currentUserRolesObservable(): Observable<any> {
+    return this.fireDb.object(`users/${localStorage.getItem("uid")}/roles`).valueChanges();
+  }
+
   ///// Authorization Logic /////
-  get hasAdminAccess(): boolean {
+  hasAdminAccess(roles: string[]): boolean {
     const allowed = ['admin']
-    return this.matchingRole(allowed)
+    return this.matchingRole(allowed, roles)
   }
-  get hassModeratorAccess(): boolean {
+  hassModeratorAccess(roles: string[]): boolean {
     const allowed = ['moderator']
-    return this.matchingRole(allowed)
+    return this.matchingRole(allowed, roles)
   }
-  get hasLecturerAccess(): boolean {
+  hasLecturerAccess(roles: string[]): boolean {
     const allowed = ['lecturer']
-    return this.matchingRole(allowed)
+    return this.matchingRole(allowed, roles)
   }
   /// Helper to determine if any matching roles exist
-  private matchingRole(allowedRoles): boolean {
-    return !_.isEmpty(_.intersection(allowedRoles, this.userRoles))
+  private matchingRole(allowedRoles, roles): boolean {
+    return !_.isEmpty(_.intersection(allowedRoles, roles))
   }
 
 }
