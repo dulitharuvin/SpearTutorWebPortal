@@ -8,6 +8,7 @@ import {
     Validator
   } from '@angular/forms';
   import { Directive } from '@angular/core';
+  import { EMAIL_REGEX , NIC_REGEX , PASSWORD_REGEX , TELEPHONE_REGEX } from './../components/shared/constants/constants';
 
   @Directive({
     selector: '[emailvalidator][ngModel]',
@@ -36,7 +37,7 @@ export class EmailValidator implements Validator {
   function emailValidator() : ValidatorFn {
     return (c: FormControl) => {
       
-      let isValid = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/.test(c.value);
+      let isValid = EMAIL_REGEX.test(c.value);
       
       if(isValid) {
         return null;
@@ -77,7 +78,7 @@ export class EmailValidator implements Validator {
   function nicValidator() : ValidatorFn {
     return (c: FormControl) => {
       
-      let isValid = /^[0-9]{9}[vVxX]$/.test(c.value);
+      let isValid = NIC_REGEX.test(c.value);
       
       if(isValid) {
         return null;
@@ -117,7 +118,7 @@ export class EmailValidator implements Validator {
   function telephoneValidator() : ValidatorFn {
     return (c: FormControl) => {
       
-      let isValid = /^(()?\d{3}())?(-|\s)?\d{3}(-|\s)?\d{4}$/.test(c.value);
+      let isValid = TELEPHONE_REGEX.test(c.value);
       
       if(isValid) {
         return null;
@@ -157,7 +158,7 @@ export class EmailValidator implements Validator {
   function passwordValidator() : ValidatorFn {
     return (c: FormControl) => {
       
-      let isValid = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/.test(c.value);
+      let isValid = PASSWORD_REGEX.test(c.value);
       
       if(isValid) {
         return null;
