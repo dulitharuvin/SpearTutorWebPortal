@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout.component';
-import { AdminGuard } from './../shared';
+import { AdminGuard, LecturerGuard } from './../shared';
 
 const routes: Routes = [
     {
@@ -10,7 +10,8 @@ const routes: Routes = [
         children: [
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             { path: 'lecturer', loadChildren: './lecturer-page/lecturer-page.module#LecturerPageModule' },
-            { path: 'user', loadChildren: './user-page/user-page.module#UserPageModule', canActivate: [AdminGuard] }
+            { path: 'user', loadChildren: './user-page/user-page.module#UserPageModule', canActivate: [AdminGuard] },
+            { path: 'tution', loadChildren: './tution-page/tution-page.module#TutionPageModule', canActivate: [AdminGuard, LecturerGuard] }
         ]
     }
 ];
