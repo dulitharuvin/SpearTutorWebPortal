@@ -1,10 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { LecturerService } from './../../../../services/lecturer.service';
 import { Lecturer } from './../../../../models/lecturer';
 
-import { EMAIL_REGEX } from './../../../shared/constants/constants';
 @Component({
   selector: 'app-lecturer-save-form',
   templateUrl: './lecturer-save-form.component.html'
@@ -12,8 +10,6 @@ import { EMAIL_REGEX } from './../../../shared/constants/constants';
 export class LecturerSaveFormComponent implements OnInit {
 
   lecturer: Lecturer;
-  private EMAIL_REGEX: string;
-
   @ViewChild('lecturerSaveForm') lecturerSaveForm: any;
 
   constructor(private lecturerService: LecturerService,

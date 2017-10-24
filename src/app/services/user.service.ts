@@ -79,4 +79,9 @@ export class UserService {
     userRef.update(this.user)
       .catch(error => console.log(error));
   }
+
+  public getAllUsers() {
+    var lecturers = this.fireDb.list<User>('users').valueChanges();
+    return lecturers;
+  }
 }

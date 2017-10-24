@@ -13,16 +13,20 @@
               <th>Email</th>
               <th>Address</th>
               <th>NIC</th>
+              <th>Telephone(Personal)</th>
+              <th>Role</th>
             </tr>
           </thead>
           <tbody>
-            <!-- <tr *ngFor="let user of users | async">
-              <td>{{lecturer.firstName}}</td>
-              <td>{{lecturer.lastName}}</td>
-              <td>{{lecturer.email}}</td>
-              <td>{{lecturer.address}}</td>
-              <td>{{lecturer.nic}}</td>
-            </tr> -->
+            <tr *ngFor="let user of users | async">
+              <td>{{user.firstName}}</td>
+              <td>{{user.lastName}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.address}}</td>
+              <td>{{user.nic}}</td>              
+              <td>{{user.telephone}}</td>
+              <td>{{user.role}}</td>
+            </tr>
           </tbody>
         </table>
       </div>
