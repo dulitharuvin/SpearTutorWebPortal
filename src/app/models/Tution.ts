@@ -1,7 +1,4 @@
-import { Day } from './enums/day';
-import { TimeOfTheDay } from './enums/times-of-the-day';
-import { TutionSize } from './enums/tution-size';
-import { TutionType } from './enums/tution-types';
+import { Day, TimeOfTheDay, TutionSize, TutionType } from './enums';
 
 export class Tution {
     name: string;
@@ -11,7 +8,7 @@ export class Tution {
     size: TutionSize;
     type: TutionType;
     startTime: Date;
-    timeOfDay: TimeOfTheDay;
+    timeOfTheDay: TimeOfTheDay;
     institute: string;
     location: string;
 }

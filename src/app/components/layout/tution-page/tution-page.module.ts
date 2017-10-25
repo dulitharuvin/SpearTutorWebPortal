@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { PageHeaderModule } from './../../shared';
+import { PageHeaderModule } from './../../../shared';
 import { TutionPageRoutingModule } from './tution-page-routing.module';
 
 import { TutionPageComponent } from './tution-page.component';

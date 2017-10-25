@@ -12,7 +12,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-import { AuthGuard } from './components/shared';
+import { AuthGuard } from './shared';
 
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';

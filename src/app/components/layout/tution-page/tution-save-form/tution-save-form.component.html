@@ -2,24 +2,39 @@
   <div class="col col-xl-12 col-lg-12">
     <div class="card mb-3">
       <div class="card-block">
-        <form role="form" #tutionSaveForm="ngForm" novalidate (ngSubmit)="registerUser()" novalidate>
+        <form role="form" #tutionSaveForm="ngForm" novalidate (ngSubmit)="saveTution()" novalidate>
 
-          <div class="form-group" [ngClass]="{
-           'has-danger': firstName.invalid && (firstName.dirty || firstName.touched),
-           'has-success': firstName.valid && (firstName.dirty || firstName.touched)
-              }">
-            <label class="form-control-label" for="firstName">Name</label>
-            <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="user.firstName" required minlength="3"
-              maxlength="25" #firstName="ngModel">
-            <div class="form-control-feedback" *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
-              <p *ngIf="firstName.errors.required">Tution Name is required</p>
-              <p *ngIf="firstName.errors.minlength">First Name must be at least 3 characters long</p>
-            </div>
+          <div class="form-group">
+            <label class="form-control-label" for="type">Tution Class Type</label>
+            <select class="form-control" name="type" [(ngModel)]="tution.type">
+              <option *ngFor="let type of tutionTypes" [ngValue]="type.value">{{type.name}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" for="size">Class Size</label>
+            <select class="form-control" name="size" [(ngModel)]="tution.size">
+              <option *ngFor="let size of tutionSizes" [ngValue]="size.value">{{size.name}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" for="day">Day of The Week</label>
+            <select class="form-control" name="day" [(ngModel)]="tution.day">
+              <option *ngFor="let day of days" [ngValue]="day.value">{{day.name}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="timeOfThDay">Time of The Day</label>
+            <select class="form-control" name="timeOfThDay" [(ngModel)]="tution.timeOfTheDay">
+              <option *ngFor="let timeOfThDay of timesOfThDay" [ngValue]="timeOfThDay.value">{{timeOfThDay.name}}</option>
+            </select>
           </div>
           <button type="submit" class="btn btn-primary" [disabled]="tutionSaveForm.invalid">Submit</button>
           <button type="reset" class="btn btn-secondary">Cancel</button>
         </form>
       </div>
     </div>
+    <pre>{{tution | json}}</pre>
   </div>
 </div>

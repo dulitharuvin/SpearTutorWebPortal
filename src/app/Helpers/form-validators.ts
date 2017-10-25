@@ -8,7 +8,7 @@ import {
   Validator
 } from '@angular/forms';
 import { Directive } from '@angular/core';
-import { EMAIL_REGEX, NIC_REGEX, PASSWORD_REGEX, TELEPHONE_REGEX } from './../components/shared/constants/constants';
+import { EMAIL_REGEX, NIC_REGEX, PASSWORD_REGEX, TELEPHONE_REGEX } from './../shared/constants/constants';
 
 @Directive({
   selector: '[emailvalidator][ngModel]',

@@ -13,7 +13,7 @@ import {
     NotificationComponent,
     ChatComponent
 } from './components';
-import { StatModule } from '../../shared';
+import { StatModule } from './../../../shared';
 
 @NgModule({
     imports: [
