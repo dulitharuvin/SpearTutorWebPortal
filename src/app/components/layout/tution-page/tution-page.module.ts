@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PageHeaderModule } from './../../../shared';
 import { TutionPageRoutingModule } from './tution-page-routing.module';
+import { YearPickerModule } from './../../../shared/modules/year-picker/year-picker.module'
 
 import { TutionPageComponent } from './tution-page.component';
 import { TutionListComponent } from './tution-list/tution-list.component';
@@ -14,7 +15,8 @@ import { TutionService } from './../../../services/tution.service';
     CommonModule,
     TutionPageRoutingModule,
     PageHeaderModule,
-    FormsModule
+    FormsModule,
+    YearPickerModule
   ],
   declarations: [
     TutionPageComponent,
