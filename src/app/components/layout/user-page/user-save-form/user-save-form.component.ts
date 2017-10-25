@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild, Directive } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { UserService } from './../../../../services/user.service';
 import { User } from './../../../../models/user';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-save-form',

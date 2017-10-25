@@ -1,3 +1,25 @@
-<p>
-  tution-save-form works!
-</p>
+<div class="row">
+  <div class="col col-xl-12 col-lg-12">
+    <div class="card mb-3">
+      <div class="card-block">
+        <form role="form" #tutionSaveForm="ngForm" novalidate (ngSubmit)="registerUser()" novalidate>
+
+          <div class="form-group" [ngClass]="{
+           'has-danger': firstName.invalid && (firstName.dirty || firstName.touched),
+           'has-success': firstName.valid && (firstName.dirty || firstName.touched)
+              }">
+            <label class="form-control-label" for="firstName">Name</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="user.firstName" required minlength="3"
+              maxlength="25" #firstName="ngModel">
+            <div class="form-control-feedback" *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+              <p *ngIf="firstName.errors.required">Tution Name is required</p>
+              <p *ngIf="firstName.errors.minlength">First Name must be at least 3 characters long</p>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="tutionSaveForm.invalid">Submit</button>
+          <button type="reset" class="btn btn-secondary">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
